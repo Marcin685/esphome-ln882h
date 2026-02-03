@@ -36,3 +36,12 @@ interval:
     then:
       - lambda: |-
           force_mac_in_ram(${my_suffix});
+
+#NEW CODE - INSERT ONLY THIS TO ESPHOME
+
+  on_boot:
+    priority: 900
+    then:
+      - lambda: |-
+          const uint8_t mac[] = {0xC0, 0x3E, 0xBA, 0x0E, 0x67, 0x11}; // address you want
+          WiFi.setMacAddress(mac);
